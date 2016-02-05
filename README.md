@@ -8,7 +8,9 @@ It is good to do all of this in a dedicated directory, since you will be cloning
 
 First, you need to get kbase-ui at [https://gitub.com/kbase/kbase-ui]() and ensure that you are set up and able to do the basic build and preview. 
 
-The *kbase-ui* repo contains seminal documentation; especially relevant is the *quick-deploy.md* description of a standard production deployment of the ui. The developer deployment differs from the production deploy, although the production deploy is a part of the development workflow (specifically, testing before a pull request is issued.)
+The *kbase-ui* repo contains seminal documentation; especially relevant is the *quick-deploy.md* description of a standard production deployment of the ui, and *prerequisites* for the build environment. 
+
+The developer deployment differs from the production deploy, although the production deploy is a part of the development workflow (specifically, testing before a pull request is issued.)
 
 In short, the developer build process is:
 
@@ -98,6 +100,49 @@ This will let you simply refresh the ui after you have made changes to the datav
 ## Anatomy of the plugin
 
 ### File layout
+
+- LICENSE
+- README.md
+- bower.json
+- package.json
+- **src**
+    - **plugin**
+        - **modules**
+            - **widgets**
+            - **resources**
+        - config.yml
+
+LICENSE
+: Standard KBase open source license
+
+README.md
+: Description of the plugin, with pointers to additional documentation. See the KBase open source standards (??).
+
+bower.json
+: Bower configuration file, required for registration with bower, and to negotiate requirements when integrated into kbase-ui or any other host environment.
+
+package.json [optional]
+: NPM configuration file for build and testing tools. At present most plugins do not support this, but we will need to implement this as soon as practical.
+
+src
+: All source code is located with on the src directory
+
+src/plugin
+: All plugin code is located within the src/plugin directory
+
+src/plugin/modules
+: All AMD loadable code is located here
+
+src/plugin/config.yml
+: This is the primary configuration file for the plugin. It is used by the host environment to integrate the plugin. See the section below detailing the contents of the config file.
+
+src/plugin/modules/resources
+: Required if any resources are to be utilized by the plugin, otherwise optional
+
+src/plugin/modules/widgets
+: Optional, but recommended to provide subdirectories for role-specific modules. This avoids the need to provide the module role within the filename.
+
+> TODO: testing framework
 
 ### Configuration
 
