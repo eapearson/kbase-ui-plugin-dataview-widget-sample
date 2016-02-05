@@ -1,0 +1,24 @@
+{
+  "name": "kbase-ui-plugin-dataiew-widget-sample",
+  "description": "Widgets to support landing page views for the service clients",
+  "main": "src/plugin/config.yml",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eapearson/kbase-ui-plugin-dataview-widget-sample.git"
+  },
+  "keywords": [
+    "kbase",
+    "ui",
+    "plugin",
+    "data"
+  ],
+  "author": "kbase",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/eapearson/kbase-ui-plugin-dataview-widget-sample/issues"
+  },
+  "homepage": "https://github.com/eapearson/kbase-ui-plugin-dataview-widget-sample#readme"
+}

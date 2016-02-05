@@ -1,0 +1,37 @@
+{
+    "name": "kbase-ui-plugin-dataview-widget-sample",
+    "description": "Widgets to support landing page views for the service clients",
+    "author": [
+        "kbase"
+    ],
+    "keywords": [
+        "kbase",
+        "ui",
+        "plugin",
+        "widget",
+        "data"
+    ],
+    "moduleType": "kbase-ui-plugin",
+    "main": "src/plugin/config.yml",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/kbase/kbase-ui-plugin-dataview-widget-sample"
+    },
+    "dependencies": {
+        "bluebird": "^3.0.0",
+        "bootstrap": "^3.3.0",
+        "datatables": "^1.10.9",
+        "datatables-bootstrap3-plugin": "^0.4.0",
+        "numeral": "^1.5.0",
+        "kbase-common-js": "^0.1.0",
+        "kbase-ui-widget": "^0.1.0",
+        "kbase-service-clients-js": "^0.1.0",
+        "kbase-data-api-client-js": "^0.1.10"
+    },
+    "devDependencies": {
+    },
+    "ignore": [
+        ".gitignore"
+    ],
+    "license": "SEE LICENSE IN LICENSE"
+}

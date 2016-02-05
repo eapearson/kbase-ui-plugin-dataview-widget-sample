@@ -1,0 +1,112 @@
+## YAML Template.
+---
+package:
+    author: KBase
+    name: dataview-widget-sample
+    description: A set of sample widgets which obtain data from kbase services
+    date: February 5, 2016
+    version: 0.1.0
+source:
+    # Optionally specify a stylesheet to be loaded for the entire plugin.
+    # Note that each widget may also specify a local stylesheet.
+    styles:
+        -            
+            file: styles.css
+install:
+    # The widgets stanza is a list of widget specifications. Each widget is 
+    # loaded into the runtime.
+    widgets:
+        -
+            id: dataview_expressionMatrix
+            module: plugins/dataview-widget-sample/modules/widgets/expressionMatrix
+            type: factory
+        -
+            id: dataview_demoPanel
+            module: plugins/dataview-widget-sample/modules/widgets/demoPanel
+            type: factory
+        -
+            id: dataview_objectInfo
+            module: plugins/dataview-widget-sample/modules/widgets/objectInfo
+            type: factory            
+        -
+            # The widget id is global across the kbase-ui. There are few if any 
+            # restrictions on widget ids, but the best pracice is to stick with
+            # the underscore separation between terms, and camelCased terms.
+            id: dataview_workspaceInfo
+            # This identifies the AMD module file within the fully built
+            # project. 
+            # NB: we will simplify this to just
+            # module: lineage
+            # very soon.
+            module: plugins/dataview-widget-sample/modules/widgets/workspaceInfo
+            # The recommended widget type is factory. See docs.
+            type: factory
+    # The types stanza provides icon and viewer information for kbase types.
+    # Note that only one plugin in the runtime should provide this specification 
+    # because we at present do not have a way of negotiationg multiple viewers.
+    # E.g. we don't have a ui component to allow a user to select their preferred 
+    # viewer or to select from multiple choices.
+    # The "default" property will set the given viewer as the one to use should
+    # there be a conflict, and if multiple plugins supply a default viewer, the
+    # most recently loaded one will win. Note that there is no order determinacy
+    # to plugins, so it is just best to avoid specifying type handlers in multiple
+    # plugins.
+    types:
+        -
+            type: 
+                module: KBaseFeatureValues
+                name:   ExpressionMatrix
+                version: any
+            icon: 
+                type: fontAwesome
+                classes: ['fa-th']
+            viewers:
+                -
+                    # if set true, this will be set as the default vis widget for this type.
+                    # note that we do not have a way of selecting one from amongst multiple widgets
+                    default: true
+                    # This the title for the widget if a wrapper panel is requested
+                    title: 'Data View'
+                    panel: true
+                    # This is the widget id name as specified in the plugin
+                    # it should follow standard namespacing. It should also be 
+                    # defined above in the modules.
+                    # module: kb_widget_dataview_communities_collection
+                    # This is the registered widget id. The mapping of widget
+                    # to module is probably made above.
+                    widget: 
+                        name: dataview_expressionMatrix
+    routes:
+        -
+            path: 
+                - dataviewwidgetsample
+                - 
+                    type: param
+                    name: workspaceId
+                -
+                    type: param
+                    name: objectId
+                -
+                    type: param
+                    name: objectReference
+            widget: dataview_demoPanel
+            authorization: true
+        -
+            path: 
+                - dataviewwidgetsample
+                - 
+                    type: param
+                    name: workspaceId
+                -
+                    type: param
+                    name: objectId
+            widget: dataview_demoPanel
+            authorization: true
+    menus:
+        -
+            name: dataview_widget_sample
+            definition:
+                path: ['dataviewwidgetsample/1052/34/1']
+                label: Dataview Widget Sample
+                icon: flask
+    
